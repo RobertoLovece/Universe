@@ -10,6 +10,7 @@ export default class ParticleManager {
     constructor(number) {
         
         this.positions;
+        this.rands;
         this.particles = [];
         this.geometry;
         this.points;
@@ -21,8 +22,10 @@ export default class ParticleManager {
     initParticles(numberOfParticles) {
 
         this.positions = new Float32Array(numberOfParticles * 3);
+        this.rands = new Float32Array(numberOfParticles);
     
         for (let i = 0; i < numberOfParticles; i++) {
+            this.rands.set([Math.random()], i);
             this.particles.push(
                 new Particle(6, 30)
             );
@@ -36,8 +39,14 @@ export default class ParticleManager {
             "position",
             new THREE.BufferAttribute(this.positions, 3)
         );
+        
+        this.geometry.setAttribute(
+            "rands",
+            new THREE.BufferAttribute(this.rands, 1)
+        );
+
     
-        var palette = colors[3];
+        var palette = colors[4];
         palette = palette.map((c) => new THREE.Color(c));
     
         var material = new THREE.ShaderMaterial({
@@ -52,6 +61,7 @@ export default class ParticleManager {
             },
             // determines how the colours stack
             //blending: THREE.AdditiveBlending,
+            //blending: THREE.NoBlending,
             //depthTest: false,
             //depthWrite: false,
         });

@@ -8,7 +8,7 @@ export default class Particle extends THREE.Object3D{
         super();
 
         // radius of orbit
-        this.radius = this.getRandomBetween(minRadius, maxRadius);
+        this.radius = this.randomFavourMax(minRadius, maxRadius);
 
         // x and y coordinates of orbit center point
         this.orbitX = 0;
@@ -44,5 +44,9 @@ export default class Particle extends THREE.Object3D{
 
     getRandomBetween(min, max) {
         return Math.random() * (max - min) + min;
+    }
+
+    randomFavourMax(min, max) {
+        return min + (max - min) * Math.pow(Math.random(), 0.85)
     }
 }

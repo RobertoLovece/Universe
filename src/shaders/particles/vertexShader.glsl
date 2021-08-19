@@ -13,6 +13,6 @@ void main() {
   vRand = floor(rands*5.);
   vec4 mvPosition = modelViewMatrix * vec4( position, 1. );
   gl_PointSize = 1000. * ( 1. / - mvPosition.z );
-  gl_PointSize = 12.*size;
+  gl_PointSize = vRand*3.0*size;
   gl_Position = projectionMatrix * mvPosition;
 }

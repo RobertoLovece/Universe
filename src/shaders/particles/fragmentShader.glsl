@@ -8,6 +8,10 @@ float PI = 3.141592653589793238;
 varying float vRand;
 uniform vec3 palette[5];
 
+vec3 cosPalette(float t, vec3 a, vec3 b, vec3 c, vec3 d) {
+	return a + b * cos(6.28318 * (c * t + d));
+}   
+
 void main()	{
 	// vec2 newUV = (vUv - vec2(0.5))*resolution.zw + vec2(0.5);
 	float dist = length(gl_PointCoord.xy - vec2(0.5));
