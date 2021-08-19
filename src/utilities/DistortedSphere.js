@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+
 import vertex from '../shaders/distortedSphere/vertexShader.glsl'
 import fragment from '../shaders/distortedSphere/fragmentShader.glsl'
 
@@ -29,7 +30,7 @@ export default class DistortedSphere extends THREE.Object3D {
                 // makes the sphere pulse, offset 0 = no pulse (0 - 1)
                 uOffset: { value: Math.PI * offset },
                 // transparency (0 - 1)
-                uAlpha: {value: 1.0},
+                uAlpha: {value: 1},
             },
             defines: { 
                 PI: Math.PI

@@ -1,20 +1,31 @@
 import * as THREE from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
+
 import DistortedSphere from './utilities/DistortedSphere.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import ParticleManager from './utilities/particleManager.js'
 
 require('normalize.css/normalize.css');
 require("./index.css");
 
-let scene, camera, renderer, controls, container, sphere, start = Date.now();
+let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, composer;
 
 window.onload = function() {
-    init();
+    
+    initScene();
+    initClearPlane();
+    initObjects();
+
+    addEventListeners();
+
     animate();
 }
 
-function init() {
+function initScene() {
 
     scene = new THREE.Scene();
+    //scene.fog = new THREE.Fog( 0x000000, 1, 1000 );
 
     container = document.getElementById('canvas');
    
@@ -28,40 +39,87 @@ function init() {
         1000
     );
 
-    camera.position.z = 15;
+    camera.position.z = 8;
+    camera.position.y = -30;
+    camera.position.x = 1;
+    camera.lookAt(new THREE.Vector3(0,0,0));
 
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+    renderer = new THREE.WebGLRenderer({ 
+        //preserveDrawingBuffer: true, 
+        alpha: true, 
+        antialias: true 
+    });
+
+    //renderer.autoClear = false;
     renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
 
+    // post-processing
+
+    composer = new EffectComposer( renderer );
+	composer.addPass( new RenderPass( scene, camera ) );
+
+	var afterimagePass = new AfterimagePass();
+    afterimagePass.uniforms[ 'damp' ].value = 0.95;
+	composer.addPass( afterimagePass );
+
+}
+
+function initObjects() {
+
+    // inits disorted sphere
     // radius, speed, color, density, strength, frequency, amplitude, offset
-    sphere = new DistortedSphere(5, 0.35, 0.1, 10, 0.2, 10, 0.5, 0);   
+    sphere = new DistortedSphere(5, 0.1, 0, 10, 0.4, 2, 0.5, 0);   
     scene.add(sphere);
 
-    controlsInit();
+    // inits particles
+    particleManager = new ParticleManager(2000);
+    particleManager = new ParticleManager(2000);
+    scene.add(particleManager.points);
+
+}
+
+function initClearPlane() {
+
+    var clearPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(2700, 2700),
+        new THREE.MeshBasicMaterial({
+            transparent: true,
+            color: 0x000000,
+            opacity: 0.1,
+        })
+    );
+
+    clearPlane.position.z = 0;
+
+    scene.add(clearPlane);
 }
 
 function animate() {
     requestAnimationFrame(animate);
 
+    // animates distorted sphere
     // updates the shaders time allowing for animation
-    scene.children.forEach(mesh => {
-        mesh.material.uniforms.uTime.value = 0.001 * ( Date.now() - start )
+    sphere.material.uniforms.uTime.value = 0.001 * ( Date.now() - start )
+
+    // animate orbiting particles
+    particleManager.particles.forEach((particle, i) => {
+        particle.updateVelocity();
+        particle.updatePosition();
+
+        particleManager.positions.set([particle.pos.x, particle.pos.y, 0], i * 3);
     });
 
-    controls.update();
+    particleManager.geometry.attributes.position.needsUpdate = true;
 
-    renderer.render(scene, camera);
+    //renderer.render(scene, camera);
+    composer.render();
 }
 
-function controlsInit() {
-
-    controls = new OrbitControls(camera, renderer.domElement);
-
-    controls.enablePan = false;
-    controls.enableZoom = false;
-    controls.enableRotate = true;
-
+// below here contains event listeners init
+function addEventListeners() {
+    window.addEventListener('resize', onWindowResize, false);
 }
 
 function onWindowResize() {
@@ -75,5 +133,3 @@ function onWindowResize() {
 
     renderer.setSize(width, height);
 }
-
-window.addEventListener('resize', onWindowResize, false);
