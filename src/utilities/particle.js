@@ -36,10 +36,6 @@ export default class Particle extends THREE.Object3D{
     updatePosition() {
         this.pos.x = this.radius*Math.cos(this.radians * this.multiplier) + this.orbitX;
         this.pos.y = this.radius*Math.sin(this.radians * this.multiplier) + this.orbitY;
-
-        if(this.pos.y <- window.innerHeight/2) {
-            this.pos.y = window.innerHeight /2;
-        }
     }
 
     getRandomBetween(min, max) {

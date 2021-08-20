@@ -24,7 +24,7 @@ void main() {
   	float distortion = pnoise((normal + t) * uNoiseDensity, vec3(10.0)) * uNoiseStrength;
 
   	vec3 pos = position + (normal * distortion);
- 	float angle = sin(uv.y * uFreq + t) * uAmp;
+ 	float angle = 1.0 * (sin(uv.y * uFreq + t) * uAmp);
  	pos = rotateY(pos, angle);
 
 	// makes it pulse

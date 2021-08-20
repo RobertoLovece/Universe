@@ -2,21 +2,23 @@ import * as THREE from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
 
 import DistortedSphere from './utilities/DistortedSphere.js';
 import ParticleManager from './utilities/particleManager.js'
 
+import glowVertexShader from './shaders/glow/vertexShader.glsl'
+import glowFragmentShader from './shaders/glow/fragmentShader.glsl'
+
 require('normalize.css/normalize.css');
 require("./index.css");
 
-let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, composer, controls;
+let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, composer;
 
 window.onload = function () {
 
     initScene();
 
-    initOrbitControls();
     // this had no effect i think
     initClearPlane();
     
@@ -46,30 +48,25 @@ function initScene() {
         1000
     );
 
-    camera.position.z = 8;
+    //camera.position.x = 1;
     camera.position.y = -30;
-    camera.position.x = 1;
+    camera.position.z = 8;
+    
     camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 
     renderer = new THREE.WebGLRenderer({
         //preserveDrawingBuffer: true, 
         alpha: true,
-        antialias: true
+        antialias: true,
+
     });
 
     //renderer.autoClear = false;
+    //renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
 
-}
-
-function initOrbitControls() {
-    controls = new OrbitControls( camera, renderer.domElement );
-
-    controls.enabled = false;
-    //controls.autoRotate = true;
-    //controls.autoRotateSpeed = 0.1;
 }
 
 function initClearPlane() {
@@ -99,18 +96,50 @@ function initPostProcessing() {
     afterimagePass.uniforms['damp'].value = 0.95;
     composer.addPass(afterimagePass);
 
+    
+    const filmPass = new FilmPass(
+        0.35,   // noise intensity
+        0.025,  // scanline intensity
+        648,    // scanline count
+        false,  // grayscale
+    );
+    filmPass.renderToScreen = true;
+    composer.addPass(filmPass);
+    
+
 }
 
 function initObjects() {
 
     // inits disorted sphere
     // radius, speed, color, density, strength, frequency, amplitude, offset
-    sphere = new DistortedSphere(5, 0.1, 0, 10, 0.4, 2, 0.5, 0);
+    sphere = new DistortedSphere(5, 0.1, 0, 10, 0.4, 2, 1, 0);
     scene.add(sphere);
 
     // inits particles
     particleManager = new ParticleManager(3000);
     scene.add(particleManager.points);
+
+    var circle = new THREE.Mesh( 
+        new THREE.SphereGeometry(60, 8, 8),
+        new THREE.ShaderMaterial({
+            vertexShader: glowVertexShader,
+            fragmentShader: glowFragmentShader,
+            //blending: THREE.AdditiveBlending,
+            //side: THREE.BackSide    
+            side: THREE.FrontSide    
+        })
+    );
+
+    circle.translateY(10);
+    circle.translateZ(-3);
+    circle.scale.set(1, 1, 0.01);
+
+
+    circle.rotateX(Math.PI);
+    
+    scene.add(circle);
+
 
 }
 
@@ -132,7 +161,6 @@ function animate() {
     particleManager.geometry.attributes.position.needsUpdate = true;
 
     //renderer.render(scene, camera);
-    controls.update();
     composer.render();
 }
 
@@ -150,5 +178,6 @@ function onWindowResize() {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(width, height);
+    renderer.setSize(width,height);
+    composer.setSize(width, height);
 }
