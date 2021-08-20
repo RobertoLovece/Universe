@@ -5,15 +5,17 @@ import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
 
 import DistortedSphere from './utilities/DistortedSphere.js';
-import ParticleManager from './utilities/particleManager.js'
+import ParticleManager from './utilities/particleManager.js';
+import Glow from './utilities/glow.js';
+import Stars from './utilities/stars.js';
 
-import glowVertexShader from './shaders/glow/vertexShader.glsl'
-import glowFragmentShader from './shaders/glow/fragmentShader.glsl'
+import glowVertexShader from './shaders/glow/vertexShader.glsl';
+import glowFragmentShader from './shaders/glow/fragmentShader.glsl';
 
 require('normalize.css/normalize.css');
 require("./index.css");
 
-let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, composer;
+let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, glow, stars, composer;
 
 window.onload = function () {
 
@@ -120,27 +122,12 @@ function initObjects() {
     particleManager = new ParticleManager(3000);
     scene.add(particleManager.points);
 
-    var circle = new THREE.Mesh( 
-        new THREE.SphereGeometry(60, 8, 8),
-        new THREE.ShaderMaterial({
-            vertexShader: glowVertexShader,
-            fragmentShader: glowFragmentShader,
-            //blending: THREE.AdditiveBlending,
-            //side: THREE.BackSide    
-            side: THREE.FrontSide    
-        })
-    );
+    // glow under effect
+    glow = new Glow();
+    scene.add(glow);
 
-    circle.translateY(10);
-    circle.translateZ(-3);
-    circle.scale.set(1, 1, 0.01);
-
-
-    circle.rotateX(Math.PI);
-    
-    scene.add(circle);
-
-
+    stars = new Stars(3000).stars;
+    scene.add(stars);
 }
 
 function animate() {
@@ -159,6 +146,9 @@ function animate() {
     });
 
     particleManager.geometry.attributes.position.needsUpdate = true;
+    
+    //animate stars
+    stars.rotation.y += -0.0002;
 
     //renderer.render(scene, camera);
     composer.render();
