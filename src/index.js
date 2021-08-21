@@ -23,7 +23,7 @@ window.onload = function () {
     initScene();
 
     // this had no effect i think
-    initClearPlane();
+    //initClearPlane();
     
     initPostProcessing();
     
