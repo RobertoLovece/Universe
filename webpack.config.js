@@ -10,6 +10,7 @@ module.exports = {
 		//print: './src/print.js',
  	},
  	output: {
+		publicPath: "/Three.js-Universe-Demo/",
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
