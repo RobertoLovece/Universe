@@ -7,7 +7,6 @@ module.exports = {
 
   	entry: {
 		index: './src/index.js',
-		//print: './src/print.js',
  	},
  	output: {
 		publicPath: "/Three.js-Universe-Demo/",

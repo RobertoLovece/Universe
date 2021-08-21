@@ -13,6 +13,8 @@ import {cssInit} from './index_css.js';
 require('normalize.css/normalize.css');
 require("./index.css");
 
+__webpack_public_path__ = window.myDynamicPublicPath;
+
 let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, glow, stars, composer;
 
 window.onload = function () {
