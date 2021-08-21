@@ -53,7 +53,7 @@ export default class ParticleManager {
     
         var material = new THREE.ShaderMaterial({
             vertexShader: vertex,
-            //fragmentShader: fragment,
+            fragmentShader: fragment,
             side: THREE.DoubleSide,
             uniforms: {
                 time: { value: 0 },
