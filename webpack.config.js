@@ -9,7 +9,7 @@ module.exports = {
 		index: './src/index.js',
  	},
  	output: {
-		publicPath: "/Three.js-Universe-Demo/",
+		// publicPath: "/Three.js-Universe-Demo/",
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
