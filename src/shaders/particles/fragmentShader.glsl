@@ -12,9 +12,9 @@ void main()	{
 
 	// float disc = smoothstep(0.4,0.45,dist);
 	// if(disc>0.01) discard;
-	// vec3 color = palette[int(vRand)];
+	vec3 color = palette[int(vRand)];
 	//--- vec3 color = vec3(1.);
-	gl_FragColor = vec4(1.0,1.0,1.0,vRand*0.1);
+	gl_FragColor = vec4(0.5,1.0,1.0,vRand*0.1);
 	// gl_FragColor = vec4(1.0,1.0,1.0,0.1);
 	// gl_FragColor = vec4(color,0.1);
 }
