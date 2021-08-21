@@ -1,12 +1,9 @@
-#ifdef GL_ES
-precision highp float;
-#endif
-
 uniform float time;
 uniform float size;
 varying vec2 vUv;
 varying vec3 vPosition;
 
+uniform sampler2D texture1;
 attribute float rands;
 varying float vRand;
 float PI = 3.141592653589793238;
