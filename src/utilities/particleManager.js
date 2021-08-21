@@ -16,7 +16,7 @@ export default class ParticleManager {
         this.points;
 
         this.initParticles(number);
-        this.initParticleGeometry();
+        this.removedShaderInit();
     }
 
     initParticles(numberOfParticles) {
@@ -69,5 +69,24 @@ export default class ParticleManager {
     
         this.points = new THREE.Points(this.geometry, material);
     
+    }
+
+    removedShaderInit() {
+
+        this.geometry = new THREE.BufferGeometry().setAttribute(
+            "position",
+            new THREE.BufferAttribute(this.positions, 3)
+        );
+
+        this.geometry.setAttribute(
+            "rands",
+            new THREE.BufferAttribute(this.rands, 1)
+        );
+    
+        var material = new THREE.PointsMaterial({
+            size: 0.05,
+        })
+
+        this.points = new THREE.Points(this.geometry, material);
     }
 }

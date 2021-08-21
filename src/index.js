@@ -51,12 +51,8 @@ function initScene() {
         1000
     );
 
-    //camera.position.x = 1;
-    camera.position.y = -30;
-    camera.position.z = 8;
-    
+    camera.position.set(0, -30, 8);  
     camera.lookAt(new THREE.Vector3(0, 0, 0));
-
 
     renderer = new THREE.WebGLRenderer({
         //preserveDrawingBuffer: true, 
@@ -107,8 +103,6 @@ function initPostProcessing() {
     );
     filmPass.renderToScreen = true;
     composer.addPass(filmPass);
-    
-    
 
 }
 
