@@ -61,7 +61,7 @@ function initScene() {
     renderer = new THREE.WebGLRenderer({
         //preserveDrawingBuffer: true, 
         alpha: true,
-        antialias: true,
+        //antialias: true,
 
     });
 
