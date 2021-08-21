@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
-    "build": "webpack",   
+    "build": "webpack",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "gh-pages": "^3.2.3",
+    "glob-parent": "^6.0.1",
     "glsl-noise": "0.0.0",
     "glsl-rotate": "^1.1.0",
     "gsap": "^3.7.1",
