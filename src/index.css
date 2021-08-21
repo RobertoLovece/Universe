@@ -91,7 +91,7 @@ a {
     }
     .content {
         display: inline-block;
-        height: 90vh;
+        height: 80vh;
         padding-top: 0em;
     }
 
@@ -117,6 +117,5 @@ a {
     u.git {
         margin-left: auto;
         margin-right: auto;
-        height: 20vh;
     }
 }
