@@ -22,8 +22,8 @@ window.onload = function () {
     cssInit();
     initScene();
 
-    // this had no effect i think
-    //initClearPlane();
+    // this is really important
+    initClearPlane();
     
     initPostProcessing();
     
