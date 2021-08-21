@@ -22,7 +22,7 @@ window.onload = function () {
     cssInit();
     initScene();
 
-    // this is really important
+    // this is really important stops obects rendering on top of each other
     initClearPlane();
     
     initPostProcessing();
