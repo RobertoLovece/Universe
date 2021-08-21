@@ -1,5 +1,4 @@
 uniform float time;
-uniform float progress;
 uniform vec4 resolution;
 varying vec2 vUv;
 varying vec3 vPosition;
