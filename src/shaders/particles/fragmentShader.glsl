@@ -4,8 +4,6 @@ precision highp float;
 
 uniform float time;
 uniform float progress;
-uniform sampler2D texture1;
-uniform vec4 resolution;
 varying vec2 vUv;
 varying vec3 vPosition;
 float PI = 3.141592653589793238;
@@ -17,7 +15,6 @@ vec3 cosPalette(float t, vec3 a, vec3 b, vec3 c, vec3 d) {
 }   
 
 void main()	{
-	// vec2 newUV = (vUv - vec2(0.5))*resolution.zw + vec2(0.5);
 	float dist = length(gl_PointCoord.xy - vec2(0.5));
 
 	float disc = smoothstep(0.4,.45,dist);

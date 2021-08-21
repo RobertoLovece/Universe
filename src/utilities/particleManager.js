@@ -59,7 +59,6 @@ export default class ParticleManager {
                 time: { value: 0 },
                 palette: { value: palette },
                 size: { value: 0.7 },
-                resolution: { value: new THREE.Vector4() },
             },
             // determines how the colours stack
             //blending: THREE.AdditiveBlending,
