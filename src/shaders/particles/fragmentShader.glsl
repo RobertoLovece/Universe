@@ -1,3 +1,7 @@
+#ifdef GL_ES
+precision highp float;
+#endif
+
 uniform float time;
 uniform float progress;
 uniform sampler2D texture1;

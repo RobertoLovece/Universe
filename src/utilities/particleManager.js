@@ -16,7 +16,8 @@ export default class ParticleManager {
         this.points;
 
         this.initParticles(number);
-        this.removedShaderInit();
+        // this.removedShaderInit();
+        this.initParticleGeometry();
     }
 
     initParticles(numberOfParticles) {
