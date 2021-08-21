@@ -4,7 +4,8 @@ varying vec2 vUv;
 varying vec3 vPosition;
 attribute float rands;
 varying float vRand;
-float PI = 3.141592653589793238;
+// float PI = 3.141592653589793238;
+float PI = 3.1415926;
 
 void main() {
   vUv = uv;
