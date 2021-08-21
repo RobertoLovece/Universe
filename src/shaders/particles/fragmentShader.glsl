@@ -4,7 +4,7 @@
 // varying vec3 vPosition;
 // float PI = 3.141592653589793238;
 varying float vRand;
-// uniform vec3 palette[5];
+uniform vec3 palette[5];
 
 void main()	{
 	//--- vec2 newUV = (vUv - vec2(0.5))*resolution.zw + vec2(0.5);
