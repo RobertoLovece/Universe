@@ -8,9 +8,7 @@ import DistortedSphere from './utilities/DistortedSphere.js';
 import ParticleManager from './utilities/particleManager.js';
 import Glow from './utilities/glow.js';
 import Stars from './utilities/stars.js';
-
-import glowVertexShader from './shaders/glow/vertexShader.glsl';
-import glowFragmentShader from './shaders/glow/fragmentShader.glsl';
+import {cssInit} from './index_css.js';
 
 require('normalize.css/normalize.css');
 require("./index.css");
@@ -19,6 +17,7 @@ let scene, camera, renderer, container, start = Date.now(), particleManager, sph
 
 window.onload = function () {
 
+    cssInit();
     initScene();
 
     // this had no effect i think
@@ -97,7 +96,6 @@ function initPostProcessing() {
     var afterimagePass = new AfterimagePass();
     afterimagePass.uniforms['damp'].value = 0.95;
     composer.addPass(afterimagePass);
-
     
     const filmPass = new FilmPass(
         0.35,   // noise intensity
@@ -107,6 +105,7 @@ function initPostProcessing() {
     );
     filmPass.renderToScreen = true;
     composer.addPass(filmPass);
+    
     
 
 }

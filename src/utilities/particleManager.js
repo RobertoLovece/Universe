@@ -46,7 +46,8 @@ export default class ParticleManager {
         );
 
     
-        var palette = colors[4];
+        // var palette = colors[4];
+        var palette = colors[5];
         palette = palette.map((c) => new THREE.Color(c));
     
         var material = new THREE.ShaderMaterial({
