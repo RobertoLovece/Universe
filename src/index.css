@@ -20,11 +20,12 @@ body {
 }
 
 .container {
+    display: grid;
     position:absolute;
     z-index:1;
-    width:100%;
+    width:100vw;
     height: 100vh;
-    display: grid;
+    grid-gap: 0px;
     place-content: center;
 }
 
@@ -46,6 +47,12 @@ body {
     transform: scaleX(1);
 }
 
+.bottom {
+    padding-top: 4em;
+    height: 100%;
+    text-align: center;
+}
+
 h1 {
     font-size: 4rem;
     width: 50vw;
@@ -53,18 +60,29 @@ h1 {
     text-align: right;
 }
 
-h1,p {
+h1,p.tag-line {
     flex-basis: 0;
     flex-grow: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); 
 }
 
 /* causes scroll issues */
-p {
+p.tag-line {
     margin-top: auto;
     margin-bottom: auto;
     font-size: 1.3rem;
     width: 40vw;
+}
+
+u.git {
+    margin-top: auto;
+    margin-bottom: auto;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+a {
+    text-decoration: none; 
+    color: White; 
 }
 
 @media (max-width: 60em) {
@@ -77,6 +95,10 @@ p {
         padding-top: 0em;
     }
 
+    .bottom {
+        padding-top: 0em;
+    }
+
     h1 {
         text-align: center;
         width: 90vw;
@@ -86,9 +108,15 @@ p {
         margin-bottom: 1em;
     }
 
-    p {
+    p.tag-line {
         margin-left: auto;
         margin-right: auto;
         width: 60vw;
+    }
+
+    u.git {
+        margin-left: auto;
+        margin-right: auto;
+        height: 10vh;
     }
 }
