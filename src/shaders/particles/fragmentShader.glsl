@@ -38,7 +38,7 @@ void main()	{
 	}
 	
 
-	number = int(vRand);
+	// number = int(vRand);
 	// vec3 color = palette[1];
 	vec3 color = palette[number];
 
