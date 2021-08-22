@@ -19,7 +19,7 @@ let scene, camera, renderer, container, start = Date.now(), particleManager, sph
 
 window.onload = function () {
 
-    console.log("deployed!");
+    console.log("hello!");
 
     cssInit();
     initScene();
@@ -116,7 +116,7 @@ function initObjects() {
     scene.add(sphere);
 
     // inits particles
-    particleManager = new ParticleManager(3000);
+    particleManager = new ParticleManager(1000);
     scene.add(particleManager.points);
 
     // glow under effect
