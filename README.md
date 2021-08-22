@@ -1,6 +1,8 @@
 # Three.js-Universe-Demo
 ![alt text](https://user-images.githubusercontent.com/48356710/130368571-7ba4db6e-33fe-408d-974b-524e6205b3e5.png)
 
-Install with npm i
+__Live demo__ - _https://robertolovece.github.io/Three.js-Universe-Demo/_
 
-Run with npm start
+__Install__ - npm i
+
+__Run__ - npm start
