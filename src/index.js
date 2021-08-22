@@ -8,7 +8,7 @@ import DistortedSphere from './utilities/DistortedSphere.js';
 import ParticleManager from './utilities/particleManager.js';
 import Glow from './utilities/glow.js';
 import Stars from './utilities/stars.js';
-import {cssInit} from './index_css.js';
+import {cssInit, showText} from './index_css.js';
 
 require('normalize.css/normalize.css');
 require("./index.css");
@@ -20,7 +20,7 @@ let scene, camera, renderer, container, start = Date.now(), particleManager, sph
 window.onload = function () {
 
     console.log("yoooo!");
-
+    showText();
     cssInit();
     initScene();
 

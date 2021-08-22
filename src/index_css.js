@@ -16,3 +16,15 @@ export function cssInit() {
     tl.to(p, { duration: 4, clipPath: 'polygon( 0 0, 100% 0, 100% 100%, 0% 100% )', y: '30px' }, "-=2")
     tl.to(u, { duration: 4, clipPath: 'polygon( 0 0, 100% 0, 100% 100%, 0% 100% )', y: '30px' }, "-=2")
 }
+
+export function showText() {
+    setVisible('h1', true);
+    setVisible('u', true);
+    setVisible('p', true);
+}
+
+const setVisible = (elementOrSelector, visible) =>
+    (typeof elementOrSelector === 'string'
+        ? document.querySelector(elementOrSelector)
+        : elementOrSelector
+    ).style.display = visible ? 'block' : 'none';
