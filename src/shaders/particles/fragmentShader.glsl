@@ -9,15 +9,18 @@ uniform vec3 palette[5];
 
 void main()	{
 	//--- vec2 newUV = (vUv - vec2(0.5))*resolution.zw + vec2(0.5);
-	float dist = length(gl_PointCoord.xy - vec2(0.5));
+	//float dist = length(gl_PointCoord.xy - vec2(0.5));
+	float dist = length(gl_PointCoord.xy - vec2(0.9));
 
-	float disc = smoothstep(0.4,0.45,dist);
+	// adjust values to change effect
+	// float disc = smoothstep(0.4,0.45,dist);
+	float disc = smoothstep(0.3,0.45,dist);
 	if(disc>0.01) discard;
 
 	// this line is causing issues on IOS
 	// vec3 color = palette[int(vRand)];
 
-/*
+
 	int number;
 
 	if (cRand > 4.99999) {	
@@ -33,9 +36,9 @@ void main()	{
 	} else if (cRand > 0.0) {
 		number = 0;
 	}
-	*/
+	
 
-	vec3 color = palette[int(vRand)];
+	vec3 color = palette[number];
 
 	//--- vec3 color = vec3(1.);
 	gl_FragColor = vec4(1.0,1.0,1.0,vRand * 0.1);

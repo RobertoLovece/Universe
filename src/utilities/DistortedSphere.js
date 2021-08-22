@@ -8,7 +8,7 @@ export default class DistortedSphere extends THREE.Object3D {
        
         super();
 
-        this.geometry = new THREE.IcosahedronGeometry(radius, 32);
+        this.geometry = new THREE.IcosahedronGeometry(radius, 64);
         this.material = new THREE.ShaderMaterial({
             vertexShader: vertex,
             fragmentShader: fragment,

@@ -49,6 +49,11 @@ export default class ParticleManager {
             "rands",
             new THREE.BufferAttribute(this.rands, 1)
         );
+
+        this.geometry.setAttribute(
+            "colorRand",
+            new THREE.BufferAttribute(this.colorRand, 1)
+        );
     
         // var palette = colors[4];
         var palette = colors[5];

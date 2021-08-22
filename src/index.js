@@ -116,7 +116,7 @@ function initObjects() {
     scene.add(sphere);
 
     // inits particles
-    particleManager = new ParticleManager(1000);
+    particleManager = new ParticleManager(3000);
     scene.add(particleManager.points);
 
     // glow under effect
