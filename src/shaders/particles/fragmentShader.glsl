@@ -17,7 +17,7 @@ void main()	{
 	// vec3 color = palette[int(vRand)];
 	highp int number = int(vRand);
 	//--- vec3 color = vec3(1.);
-	gl_FragColor = vec4(1,1.0,1.0,vRand*0.1);
+	gl_FragColor = vec4(0.5,1.0,1.0,vRand*0.1);
 	// gl_FragColor = vec4(1.0,1.0,1.0,0.1);
 	// gl_FragColor = vec4(color,0.1);
 }
