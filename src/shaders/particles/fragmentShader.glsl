@@ -22,6 +22,7 @@ void main()	{
 
 
 	int number;
+	vec3 color;
 
 	if (cRand > 4.99999) {	
 		number = 5;
@@ -37,10 +38,14 @@ void main()	{
 		number = 0;
 	}
 	
-
+	for (int x = 0; x < 5; x++) {
+		if (x == int(vRand)) {
+			color = palette[x];
+		}
+	}
 	// number = int(vRand);
 	// vec3 color = palette[1];
-	vec3 color = palette[number];
+	// vec3 color = palette[number];
 
 	//--- vec3 color = vec3(1.);
 	gl_FragColor = vec4(1.0,1.0,1.0,vRand * 0.1);
