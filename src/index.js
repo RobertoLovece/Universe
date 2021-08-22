@@ -19,7 +19,7 @@ let scene, camera, renderer, container, start = Date.now(), particleManager, sph
 
 window.onload = function () {
 
-    console.log("deployed!");
+    console.log("hello!");
 
     cssInit();
     initScene();
