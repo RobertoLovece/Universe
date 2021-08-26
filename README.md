@@ -5,4 +5,4 @@ __Live demo__ - _https://robertolovece.github.io/Three.js-Universe-Demo/_
 
 __Install__ - npm i
 
-__Run__ - npm start
+__Run__ - npm run start
