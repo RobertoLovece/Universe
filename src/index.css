@@ -21,10 +21,10 @@ body {
 
 .container {
     display: grid;
-    position:absolute;
+    position:relative;
     z-index:1;
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
     grid-gap: 0px;
     place-content: center;
 }
@@ -45,12 +45,6 @@ body {
     width:100%;
     border-bottom: 1px solid white;
     transform: scaleX(1);
-}
-
-.bottom {
-    padding-top: 4em;
-    height: 100%;
-    text-align: center;
 }
 
 h1 {
@@ -74,9 +68,19 @@ p.tag-line {
     width: 40vw;
 }
 
+.bottom {
+    position: absolute;
+    width: 100%;
+    /* padding-top: 4em; */
+    height: 100vh;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 u.git {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 85vh;
+    margin-bottom: 0%;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
 
@@ -86,17 +90,16 @@ a {
 }
 
 @media (max-width: 60em) {
+
     .container {
         text-align: center;
     }
+
     .content {
         display: inline-block;
         height: 90vh;
         padding-top: 0em;
-    }
-
-    .bottom {
-        padding-top: 0em;
+        padding-bottom: 0em;
     }
 
     h1 {
@@ -112,10 +115,5 @@ a {
         margin-left: auto;
         margin-right: auto;
         width: 60vw;
-    }
-
-    u.git {
-        margin-left: auto;
-        margin-right: auto;
     }
 }
