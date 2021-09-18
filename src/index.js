@@ -18,8 +18,7 @@ __webpack_public_path__ = window.myDynamicPublicPath;
 let scene, camera, renderer, container, start = Date.now(), particleManager, sphere, glow, stars, composer;
 
 window.onload = function () {
-
-    console.log("yoooo!");
+    
     showText();
     cssInit();
     initScene();
@@ -62,9 +61,8 @@ function initScene() {
         //antialias: true,
 
     });
-
-    //renderer.autoClear = false;
-    //renderer.outputEncoding = THREE.sRGBEncoding;
+    
+    renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
 
@@ -165,6 +163,8 @@ function onWindowResize() {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(width,height);
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize(width, height);
+    composer.setPixelRatio( window.devicePixelRatio );
     composer.setSize(width, height);
 }
