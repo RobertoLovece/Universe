@@ -6,10 +6,10 @@ module.exports = {
  	mode: 'development',
 
   	entry: {
-		index: './src/index.js',
+		index: './index.js',
+		//print: './src/print.js',
  	},
  	output: {
-		// publicPath: "/Three.js-Universe-Demo/",
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
@@ -17,17 +17,19 @@ module.exports = {
 
  	plugins: [
 		new HtmlWebpackPlugin({
-		  template: './src/index.html',
-		  inject: true,
-		  chunks: ['index'],
-		  filename: 'index.html'
+		  	template: './index.html',
+		  	inject: true,
+		  	chunks: ['index'],
+		  	filename: 'index.html'
 		}),
  	],
 
+	target: 'web',
   	devtool: 'inline-source-map',
   	devServer: {
-		contentBase: './dist',
-		port: 8080
+		open: true,
+		static: './dist',
+		port: 8080,
   	},
 
   	module: {

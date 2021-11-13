@@ -4,14 +4,14 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
 
-import DistortedSphere from './utilities/DistortedSphere.js';
-import ParticleManager from './utilities/particleManager.js';
-import Glow from './utilities/glow.js';
-import Stars from './utilities/stars.js';
-import {cssInit, showText} from './index_css.js';
+import DistortedSphere from './src/utilities/DistortedSphere.js';
+import ParticleManager from './src/utilities/particleManager.js';
+import Glow from './src/utilities/glow.js';
+import Stars from './src/utilities/stars.js';
+import {cssInit, showText} from './src/index_css.js';
 
 require('normalize.css/normalize.css');
-require("./index.css");
+require('./src/index.css');
 
 __webpack_public_path__ = window.myDynamicPublicPath;
 

@@ -1,7 +1,4 @@
 import * as THREE from 'three';
-
-import Vec2 from 'vec2';
-
 export default class Particle extends THREE.Object3D{
     constructor(minRadius, maxRadius) {
 
@@ -22,7 +19,7 @@ export default class Particle extends THREE.Object3D{
         this.multiplier = 1;
 
         // keeps track of current pos of particle
-        this.pos = new Vec2();
+        this.pos = new THREE.Vector2();
         this.pos.x = 0;
         this.pos.y = 0;
 

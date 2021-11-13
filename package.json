@@ -21,17 +21,15 @@
     "style-loader": "^3.2.1",
     "webpack": "^5.49.0",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
     "gh-pages": "^3.2.3",
-    "glob-parent": "^6.0.1",
-    "glsl-noise": "0.0.0",
+    "glsl-noise": "^0.0.0",
     "glsl-rotate": "^1.1.0",
-    "gsap": "^3.7.1",
+    "gsap": "^3.8.0",
     "nice-color-palettes": "^3.0.0",
     "normalize.css": "^8.0.1",
-    "three": "^0.131.3",
-    "vec2": "^1.6.1"
+    "three": "^0.131.3"
   }
 }
